@@ -82,8 +82,11 @@ def load_obj(
         try:
             # use the resolver to get the data
             material_kwargs = parse_mtl(resolver[mtl_path], resolver=resolver)
-            # turn parsed kwargs into material objects
-            materials = {k: SimpleMaterial(**v) for k, v in material_kwargs.items()}
+            # turn parsed kwargs into material objects, passing the name
+            materials = {
+                k: SimpleMaterial(name=k, **{key: value for key, value in v.items() if key != 'newmtl'})
+                for k, v in material_kwargs.items()
+            }
         except (OSError, TypeError):
             # usually the resolver couldn't find the asset
             log.debug(f"unable to load materials from: {mtl_path}")
