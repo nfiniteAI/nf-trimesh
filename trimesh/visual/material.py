@@ -66,6 +66,7 @@ class SimpleMaterial(Material):
 
     def __init__(
         self,
+        name=None,
         image=None,
         diffuse=None,
         ambient=None,
@@ -84,6 +85,9 @@ class SimpleMaterial(Material):
 
         # save Ns
         self.glossiness = glossiness
+
+        # save name
+        self.name = name
 
         # save other keyword arguments
         self.kwargs = kwargs
