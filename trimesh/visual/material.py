@@ -66,7 +66,6 @@ class SimpleMaterial(Material):
 
     def __init__(
         self,
-        name=None,
         image=None,
         diffuse=None,
         ambient=None,
